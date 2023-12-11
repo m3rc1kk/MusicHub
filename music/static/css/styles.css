@@ -37,7 +37,7 @@
 }
 
 .subtitle{
-    font-size: 40px;
+    font-size: 35px;
     font-weight: 500;
     color: #fff;
 }
@@ -65,7 +65,7 @@
 
 .main_page_image{
     border-radius: 100px;
-    width: 40px;
+    width: 55px;
     position: absolute;
     top: 60px;
     left: 120px;
@@ -73,9 +73,9 @@
 
 .main_page_suptitle{
     position: absolute;
-    top: 70px;
-    left: 168px;
-    font-size: 15px;
+    top: 75px;
+    left: 190px;
+    font-size: 20px;
     
 }
 
@@ -108,7 +108,7 @@
     text-align: center;
 }
 
-.username_form, .password_form, .firstname_form, .secondname_form, .password1_form, .password2_form, .username_reg_form, .email_form {
+.default_form, .password_form, .firstname_form, .secondname_form, .password1_form, .password2_form, .username_reg_form, .email_form {
     width: 450px;
     height: 70px;
     border: 0;
@@ -233,4 +233,38 @@
 .password_change_login:hover{
     box-shadow:0 0 15px #A10AFF;
 
+}
+
+
+
+
+/* form_file */
+
+.file-upload {
+    position: relative;
+    display: inline-block;
+}
+
+.file-input {
+    visibility: hidden;
+    position: absolute;
+    width: 0;
+    height: 0;
+}
+
+.file-label {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #fff;
+    color: #7000B5;
+    cursor: pointer;
+    font-weight: 400;
+    border: 0;
+    border-radius: 50px;
+    margin-bottom: 15px;
+    transition: .2s;
+}
+
+.file-label:hover {
+    box-shadow:0 0 15px #A10AFF;
 }

@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% block title %}Добавление песни{% endblock %}
+
+
+{% block content %}
+{% if request.user.is_authenticated %}
+<div class="main">
+    <div class="main__block">
+        <h2 class="main__title">Добавить песню</h2>
+            <form enctype="multipart/form-data" action="" method="post">
+                {% csrf_token %}
+                <div>
+                    {{form.title|add_class:'default_form'|attr:'placeholder:Название песни'}}
+                </div>
+
+                <div class="file-upload">
+                    {{form.file|add_class:'file-input'|attr:'id:file'}}
+                    <label for="file" class="file-label">Добавить файл</label>
+                    
+                </div>
+                <div>
+                    <button type="submit" class="main__button">Добавить</button>
+                </div>
+            </form>
+    </div>
+</div>
+{% endif %}
+{% endblock %}
+<!--
+<div class="input__wrapper">
+    {{form.file|add_class:'input input__file'|attr:'id:input__file'}}
+    <label for="input__file" class="file-label">Добавить файл</label>
+    
+</div>
+-->
