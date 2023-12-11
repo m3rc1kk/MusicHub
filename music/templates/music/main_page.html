@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <title>MusicHub</title>
+</head>
+<body>
+    <div class="main_page">
+        <img src="{% static 'img/logo.jpg' %}" alt="" class="main_page_image">
+        <h2 class="main_page_suptitle">MusicHub</h2>
+        <h1 class="main_page_title">MusicHub</h1>
+        <p class="subtitle">Присоединяйся к сообществу музыкантов</p>
+        <div class="btn">
+            <a class ='main_page_button' href="{% url 'register' %}">Регистрация</a>
+            
+    </div>
+        
+    </div>
+</body>
+</html>

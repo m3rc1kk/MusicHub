@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% block title%}Регистрация{% endblock %}
+
+{% block content %}
+{% if request.user.is_authenticated %}
+<div class="logout_block_back">
+    <div class="logout_block">
+        <a class = 'back_to_login' href="{% url 'logout' %}">Выйти из аккаунта</a>
+    </div>
+    <div class="back_to_main_block">
+        <a href="#" class="back_to_main">Вернуться на главную</a>
+    </div>
+</div>
+{% else %}
+<div class="main_register">
+    <div class="reg">
+        <h2 class="register_title">Регистрация</h2>
+            <form action="" method="post">
+                {% csrf_token %}
+                <div>
+                {{ form.username|add_class:'username_reg_form'|attr:'placeholder:Логин' }}
+                </div>
+                <div>
+                    {{ form.email|add_class:'email_form'|attr:'placeholder:Почта' }}
+                </div>
+                <div>
+                {{ form.first_name|add_class:'firstname_form'|attr:'placeholder:Имя' }}
+                </div>
+                <div>
+                {{ form.last_name|add_class:'secondname_form'|attr:'placeholder:Фамилия' }}
+                </div>
+                <div>
+                {{ form.password1|add_class:'password1_form'|attr:'placeholder:Пароль' }}
+                </div>
+                <div>
+                {{ form.password2|add_class:'password2_form'|attr:'placeholder:Повторить пароль' }}
+                </div>
+                <button type="submit" class="register_button">Зарегестрироваться</button>
+            </form>
+            <a href="{% url 'login' %}" class="already_account">Уже есть аккаунт</a>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

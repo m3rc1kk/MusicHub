@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% block title%}Вход{% endblock %}
+
+{% block content %}
+{% if request.user.is_authenticated %}
+<div class="logout_block_back">
+    <div class="logout_block">
+        <a class = 'back_to_login' href="{% url 'logout' %}">Выйти из аккаунта</a>
+    </div>
+    <div class="back_to_main_block">
+        <a href="#" class="back_to_main">Вернуться на главную</a>
+    </div>
+</div>
+{% else %}
+<div class="main">
+    <div class="main__block">
+        <h2 class="main__title">Вход</h2>
+        <form action="" method="post">
+            {% csrf_token %}
+            <div>
+            {{ form.username|add_class:'username_form'|attr:'placeholder:Логин' }}
+            </div>  
+            <div>
+            {{ form.password|add_class:'password_form'|attr:'placeholder:Пароль' }}
+            </div>
+            <button type="submit" class="main__button">Войти</button>
+        </form>
+        <a href="{% url 'register' %}" class="no_account">Нет аккаунта</a>
+        <a class ='no_account' href="{% url 'password_reset' %}">Забыл пароль</a>
+    </div>
+</div>
+
+
+{% endif %}
+{% endblock %}
