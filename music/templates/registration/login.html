@@ -9,7 +9,7 @@
         <a class = 'back_to_login' href="{% url 'logout' %}">Выйти из аккаунта</a>
     </div>
     <div class="back_to_main_block">
-        <a href="#" class="back_to_main">Вернуться на главную</a>
+        <a href="{% url 'home' %}" class="back_to_main">Вернуться на главную</a>
     </div>
 </div>
 {% else %}
@@ -19,7 +19,7 @@
         <form action="" method="post">
             {% csrf_token %}
             <div>
-            {{ form.username|add_class:'username_form'|attr:'placeholder:Логин' }}
+            {{ form.username|add_class:'default_form'|attr:'placeholder:Логин' }}
             </div>  
             <div>
             {{ form.password|add_class:'password_form'|attr:'placeholder:Пароль' }}

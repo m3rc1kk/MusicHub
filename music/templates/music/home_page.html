@@ -8,12 +8,22 @@
     <title>MusicHub</title>
 </head>
 <body>
-    <div class="main_page">
-        <img src="{% static 'img/logo.jpg' %}" alt="" class="main_page_image">
-        <h2 class="main_page_suptitle">MusicHub</h2>
-       
-    </div>
+    {% if request.user.is_authenticated %}
+    <div class="main home-main">
+            <div class="home_title_block">
+                <h2 class="main__title hometitle">MusicHub</h2>
+                <a class = 'home_user' href="{% url 'detail' user.id %}">{{ request.user }}</a>
+            </div>
+            
+            {% for music in musicmodel_list %}
+            {{ music.title }}
+            
+            {{ music.author }}
+            {% endfor %}
+            <img src="{% static 'img/logo.jpg' %}" alt="" class="main_page_image">
+            <h2 class="main_page_suptitle">MusicHub</h2>
         
     </div>
+    {% endif %}
 </body>
 </html>

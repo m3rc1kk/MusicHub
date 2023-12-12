@@ -17,10 +17,12 @@ def upload_music(request):
             form = form.save(commit=False)
             form.author = request.user 
             form.save()
-            return redirect('main')
+            return redirect('home')
     else:
         form = MusicForm()
     
     return render(request, 'music/upload_music.html', {'form': form})
 
-#def ListMusicView(ListView):
+class ListMusicView(ListView):
+    model = MusicModel
+    template_name = 'music/home_page.html'

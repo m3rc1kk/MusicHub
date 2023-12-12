@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block title%}{{ user.username }}{% endblock %}
+
+{% block content %}
+<div class="main">
+    <div class="main__block">
+        <div class="detail-block">
+            <h2 class="main__title detail-title">{{ user.username }}</h2>
+            <div class="detail-info">
+                <p class = 'detail_fn'>{{ user.first_name }}</p>
+                <p class = 'detail_ln'>{{ user.last_name }}</p>
+            </div>
+        </div>
+        <img src="{% static 'img/logo.jpg' %}" alt="" class="main_page_image">
+        <h2 class="main_page_suptitle">MusicHub</h2>
+        
+    </div>
+</div>
+
+
+{% endblock %}

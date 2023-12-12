@@ -23,6 +23,8 @@ urlpatterns = [
         name="password_reset_complete",
     ),
 
+    path('detail/<int:pk>', DetailUser.as_view(), name = 'detail'),
+
     
     
     

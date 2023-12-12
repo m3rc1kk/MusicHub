@@ -237,6 +237,22 @@
 
 
 
+.detail-block{
+    margin-top: -400px;
+    
+   
+}
+
+.detail-title{
+    margin-bottom: 4px;
+    font-size: 80px;
+}
+
+.detail_fn, .detail_ln{
+    display: inline-block;
+    font-size: 20px;
+}
+
 
 /* form_file */
 
@@ -267,4 +283,37 @@
 
 .file-label:hover {
     box-shadow:0 0 15px #A10AFF;
+}
+
+
+
+/* home */
+.home-main{
+    display: block;
+    
+}
+
+
+
+.home_title_block{
+    display: block;
+    text-align: center;
+    padding-top: 55px;
+    position: relative;
+}
+
+.home_user{
+    position: absolute;
+    top: 70px;
+    right: 180px;
+    font-size: 20px;
+    cursor: pointer;
+    text-decoration: none;
+    color:#fff;
+    transition: .2s;
+
+}
+
+.home_user:hover{
+    opacity: .8;
 }
