@@ -1,29 +1,43 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-    <title>MusicHub</title>
-</head>
-<body>
-    {% if request.user.is_authenticated %}
-    <div class="main home-main">
-            <div class="home_title_block">
-                <h2 class="main__title hometitle">MusicHub</h2>
-                <a class = 'home_user' href="{% url 'detail' user.id %}">{{ request.user }}</a>
-            </div>
-            
-            {% for music in musicmodel_list %}
-            {{ music.title }}
-            
-            {{ music.author }}
-            {% endfor %}
-            <img src="{% static 'img/logo.jpg' %}" alt="" class="main_page_image">
-            <h2 class="main_page_suptitle">MusicHub</h2>
-        
-    </div>
-    {% endif %}
-</body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+		<title>MusicHub</title>
+	</head>
+	<body>
+		{% if request.user.is_authenticated %}
+		<div class="main home-main">
+			<div class="home_title_block">
+				<h2 class="main__title hometitle">MusicHub</h2>
+				<a class="home_user" href="{% url 'detail' user.id %}">{{ request.user }}</a>
+			</div>
+
+			<div class="upload_music">
+				<a class = 'upl_music' href="{% url 'upload-music' %}">Добавить песню</a>
+			</div>
+
+			{% for music in musicmodel_list %} 
+			<div class="home_block_music">
+				<div class="home_music_title_author">
+					{{ music.author }} - {{ music.title }}
+				
+				</div>
+				<div class="home_music_file">
+					<audio controls = "controls" class = 'music_player'>
+  					<source src="{{ music.file.url }}" >
+					</audio>
+				</div>
+				<div class="home_music_date">
+					{{music.publication_date.date}}
+				</div>
+			</div>
+			{% endfor %}
+			<img src="{% static 'img/logo.jpg' %}" alt="" class="main_page_image" />
+			<h2 class="main_page_suptitle">MusicHub</h2>
+		</div>
+		{% endif %}
+	</body>
 </html>

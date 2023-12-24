@@ -317,3 +317,68 @@
 .home_user:hover{
     opacity: .8;
 }
+
+.home_block_music {
+    display: block;
+    width: 1000px;
+    height: 130px;
+    margin-left: auto;
+    margin-right: auto; 
+    background-color: #f2f2f2;
+    border: 0;
+    border-radius: 30px;
+    text-align: center;
+    margin-top: 40px;
+}
+
+.music_player {
+  width: 950px;
+  border: 0;
+  border-radius: 5px;
+}
+
+.home_music_title_author{
+    color: #7000B5;
+    font-size: 30px;
+    font-weight: 700;
+    text-align: left;
+    padding-left: 41px;
+    padding-top: 20px;
+}
+
+.home_music_file{
+    padding-top: 9px;
+}
+
+.home_music_date{
+    color: #7000B5;
+    font-size: 20px;
+    font-weight: 400;
+    text-align: right;
+    margin-top: -98px;
+    margin-right: 48px;
+}
+
+
+.upload_music {
+    display: flex;
+    justify-content: right;
+    margin-right: 85px;
+    margin-top: -30px;
+}
+
+.upl_music{
+    background-color: #fff;
+    padding: 10px 50px;
+    text-align: center;
+    color: #7000B5;
+    font-weight: 500;
+    border: 0;
+    border-radius: 20px;
+    
+    text-decoration: none;
+}
+
+.upl_music:hover{
+    box-shadow:0 0 15px #A10AFF;
+}
