@@ -22,8 +22,9 @@ urlpatterns = [
         auth_views.PasswordResetCompleteView.as_view(),
         name="password_reset_complete",
     ),
-
+    
     path('detail/<int:pk>', DetailUser.as_view(), name = 'detail'),
+    
 
     
     

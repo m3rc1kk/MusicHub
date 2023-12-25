@@ -11,10 +11,28 @@
             <div class="detail-info">
                 <p class = 'detail_fn'>{{ user.first_name }}</p>
                 <p class = 'detail_ln'>{{ user.last_name }}</p>
-            </div>
         </div>
+    </div>
         <img src="{% static 'img/logo.jpg' %}" alt="" class="main_page_image">
         <h2 class="main_page_suptitle">MusicHub</h2>
+        {% for music in musicmodel %}
+        {% if music.author == user %}
+			<div class="home_block_music">
+				<div class="home_music_title_author">
+					<a class = 'home_music_author' href="{% url 'detail' music.author.id %}">{{ music.author }}</a> - {{ music.title }}
+				
+				</div>
+				<div class="home_music_file">
+					<audio controls = "controls" class = 'music_player'>
+  					<source src="{{ music.file.url }}" >
+					</audio>
+				</div>
+				<div class="home_music_date">
+					{{music.publication_date.date}}
+				</div>
+			</div>
+        {% endif %}
+		{% endfor %}
         
     </div>
 </div>

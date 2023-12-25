@@ -1,19 +1,16 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" href="{% static 'css/styles.css' %}" />
-		<title>MusicHub</title>
-	</head>
-	<body>
-		{% if request.user.is_authenticated %}
+
+{% block title %}MusicHub{% endblock%}
+	
+{% block content %}
+{% if request.user.is_authenticated %}
 		<div class="main home-main">
 			<div class="home_title_block">
 				<h2 class="main__title hometitle">MusicHub</h2>
 				<a class="home_user" href="{% url 'detail' user.id %}">{{ request.user }}</a>
 			</div>
+			
 
 			<div class="upload_music">
 				<a class = 'upl_music' href="{% url 'upload-music' %}">Добавить песню</a>
@@ -22,7 +19,7 @@
 			{% for music in musicmodel_list %} 
 			<div class="home_block_music">
 				<div class="home_music_title_author">
-					{{ music.author }} - {{ music.title }}
+					<a class = 'home_music_author' href="{% url 'detail' music.author.id %}">{{ music.author }}</a> - {{ music.title }}
 				
 				</div>
 				<div class="home_music_file">
@@ -36,8 +33,27 @@
 			</div>
 			{% endfor %}
 			<img src="{% static 'img/logo.jpg' %}" alt="" class="main_page_image" />
-			<h2 class="main_page_suptitle">MusicHub</h2>
+			<h2 class="main_page_suptitle">MusicHub</h2>\
+			<div class="pagination_block">
+				
+				<ul>
+        {% for p in paginator.page_range %}
+						{% if page_obj.has_other_pages %}
+            {% if page_obj.number == p %}
+                <li class="pagionation_selected">{{ p }}</li>
+            
+
+            {% elif p >= page_obj.number|add:-2 and p <= page_obj.number|add:2  %}
+                <li class = 'pagionation_no_selected'>
+                    <a class = 'pag_no_selected ' href="?page={{p}}">{{ p }}</a>
+                </li>
+                
+            {% endif %}
+						{% endif %}
+        {% endfor %}
+    		</ul>
+			</div>
 		</div>
 		{% endif %}
-	</body>
-</html>
+{% endblock %}
+

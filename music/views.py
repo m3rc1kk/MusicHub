@@ -25,6 +25,7 @@ def upload_music(request):
     return render(request, 'music/upload_music.html', {'form': form})
 
 class ListMusicView(ListView):
+    paginate_by = 4
     model = MusicModel
     template_name = 'music/home_page.html'
 

@@ -4,6 +4,8 @@ from .forms import *
 from django.contrib.auth.views import LoginView, LogoutView
 from django.views import generic
 from django.contrib.auth import login, logout
+from music.models import MusicModel
+from django.core.paginator import Paginator
 
 def UserRegisterView(request):
     if request.method == 'POST':
@@ -25,6 +27,10 @@ def logout_user(request):
 
 
 class DetailUser(generic.DetailView):
+
     model = User
     template_name = 'account/detail.html'
-    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['musicmodel'] = MusicModel.objects.all()
+        return context
