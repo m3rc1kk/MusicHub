@@ -20,8 +20,14 @@
 			<div class="home_block_music">
 				<div class="home_music_title_author">
 					<a class = 'home_music_author' href="{% url 'detail' music.author.id %}">{{ music.author }}</a> - {{ music.title }}
-				
+					
+
 				</div>
+				{% if request.user == music.author %}
+					<div class="home_music_delete_block">
+						<a class = 'home_music_delete' href="{% url 'delete' music.id %}">Удалить</a>
+					</div>
+				{% endif %}
 				<div class="home_music_file">
 					<audio controls = "controls" class = 'music_player'>
   					<source src="{{ music.file.url }}" >

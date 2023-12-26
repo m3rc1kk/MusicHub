@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 class MusicModel(models.Model):
-    title = models.CharField(max_length=50)
+    title = models.CharField(max_length=25)
     file = models.FileField(upload_to='music_file/')
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     publication_date = models.DateTimeField(null = True, auto_now_add = True)

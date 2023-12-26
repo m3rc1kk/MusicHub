@@ -6,6 +6,7 @@ from django.views import generic
 from django.contrib.auth import login, logout
 from music.models import MusicModel
 from django.core.paginator import Paginator
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 def UserRegisterView(request):
     if request.method == 'POST':
@@ -26,11 +27,15 @@ def logout_user(request):
         return redirect('login')
 
 
-class DetailUser(generic.DetailView):
+class DetailUser(LoginRequiredMixin, generic.DetailView):
 
     model = User
     template_name = 'account/detail.html'
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['musicmodel'] = MusicModel.objects.all()
+        music_objects = MusicModel.objects.all()
+         
+
+        context['musicmodel'] = music_objects
+       
         return context

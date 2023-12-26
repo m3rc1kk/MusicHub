@@ -15,12 +15,27 @@
     </div>
         <img src="{% static 'img/logo.jpg' %}" alt="" class="main_page_image">
         <h2 class="main_page_suptitle">MusicHub</h2>
+        <div class="back-to-home_block">
+            <a class="back-to-home" href="{% url 'home' %}">Обратно на главную</a>
+        </div>
+        {% if request.user == user %}
+            <div class="detail_logout_block">
+                <a class= 'detail_logout' href="{% url 'logout' %}">Выйти из аккаунта</a>
+            </div>
+        {% endif %}
         {% for music in musicmodel %}
         {% if music.author == user %}
+        
 			<div class="home_block_music">
-				<div class="home_music_title_author">
+				<div class="home_music_title_author detail-title-author">
 					<a class = 'home_music_author' href="{% url 'detail' music.author.id %}">{{ music.author }}</a> - {{ music.title }}
 				
+                {% if request.user == music.author %}
+					<div class="home_music_delete_block detail_delete">
+						<a class = 'home_music_delete' href="{% url 'delete' music.id %}">Удалить</a>
+					</div>
+				{% endif %}
+
 				</div>
 				<div class="home_music_file">
 					<audio controls = "controls" class = 'music_player'>
@@ -31,6 +46,7 @@
 					{{music.publication_date.date}}
 				</div>
 			</div>
+        
         {% endif %}
 		{% endfor %}
         

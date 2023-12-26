@@ -5,5 +5,6 @@ urlpatterns = [
     
     path('main/', main_page, name = 'main'),
     path('uploadmusic/', upload_music, name = 'upload-music' ),
-    path('home/', ListMusicView.as_view(), name = 'home')
+    path('home/', ListMusicView.as_view(), name = 'home'),
+    path('delete/<int:pk>', DeleteMusicView.as_view(), name = 'delete')
 ]

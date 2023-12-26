@@ -26,6 +26,11 @@
                 </div>
                 <div>
                 {{ form.first_name|add_class:'firstname_form'|attr:'placeholder:Имя' }}
+                {% if form.first_name.errors %}
+                
+                    <div class="error">{{ form.first_name.errors }}</div>
+               
+                {% endif %}
                 </div>
                 <div>
                 {{ form.last_name|add_class:'secondname_form'|attr:'placeholder:Фамилия' }}

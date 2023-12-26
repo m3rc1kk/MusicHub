@@ -5,3 +5,5 @@ class MusicForm(forms.ModelForm):
     class Meta:
         model = MusicModel
         fields = ['title', 'file']
+
+    
