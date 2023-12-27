@@ -20,6 +20,11 @@
                 {% csrf_token %}
                 <div>
                 {{ form.username|add_class:'username_reg_form'|attr:'placeholder:Логин' }}
+                {% if form.username.errors %}
+                
+                    <div class="error">{{ form.username.errors }}</div>
+               
+                {% endif %}
                 </div>
                 <div>
                     {{ form.email|add_class:'email_form'|attr:'placeholder:Почта' }}
@@ -34,12 +39,22 @@
                 </div>
                 <div>
                 {{ form.last_name|add_class:'secondname_form'|attr:'placeholder:Фамилия' }}
+                {% if form.last_name.errors|striptags %}
+                
+                    <div class="error">{{ form.last_name.errors }}</div>
+               
+                {% endif %}
                 </div>
                 <div>
                 {{ form.password1|add_class:'password1_form'|attr:'placeholder:Пароль' }}
                 </div>
                 <div>
                 {{ form.password2|add_class:'password2_form'|attr:'placeholder:Повторить пароль' }}
+                {% if form.password2.errors %}
+                
+                    <div class="error">{{ form.password2.errors }}</div>
+               
+                {% endif %}
                 </div>
                 <button type="submit" class="register_button">Зарегестрироваться</button>
             </form>

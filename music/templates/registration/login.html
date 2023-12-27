@@ -20,9 +20,19 @@
             {% csrf_token %}
             <div>
             {{ form.username|add_class:'default_form'|attr:'placeholder:Логин' }}
+            {% if form.username.errors %}
+                
+                <div class="error">{{ form.username.errors }}</div>
+               
+            {% endif %}
             </div>  
             <div>
             {{ form.password|add_class:'password_form'|attr:'placeholder:Пароль' }}
+            {% if form.password.errors %}
+                
+                <div class="error">{{ form.password.errors }}</div>
+               
+            {% endif %}
             </div>
             <button type="submit" class="main__button">Войти</button>
         </form>

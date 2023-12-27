@@ -39,3 +39,6 @@ class DetailUser(LoginRequiredMixin, generic.DetailView):
         context['musicmodel'] = music_objects
        
         return context
+
+class CustomLoginView(LoginView):
+     authentication_form = LoginForm
