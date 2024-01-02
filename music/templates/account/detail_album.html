@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}MusicHub{% endblock%}
+	
+{% block content %}
+{% if request.user.is_authenticated %}
+		<div class="main home-main">
+			<div class="home_title_block">
+				<h2 class="main__title hometitle">MusicHub</h2>
+				<a class="home_user" href="{% url 'detail' user.id %}">{{ request.user }}</a>
+			</div>
+			
+      <div class="music-album">
+				<ul>
+					<li class = 'switch_to_music'><a class = 'sw_to_music'  href="{% url 'detail' user.id %}">Музыка</a></li>
+          
+					<li class = 'switch_to_album'><a class = 'sw_to_album' href="{% url 'detail-album' user.id %}">Альбомы</a></li>
+				</ul>
+			</div>
+
+
+			<div class="upload_music">
+				<a class = 'upl_music' href="{% url 'upload-music' %}">Добавить песню</a>
+			</div>
+
+			<div class="create_album">
+				<a class = 'cr_album' href="{% url 'create-album' %}">Добавить альбом</a>
+			</div>
+
+			{% for album in albummodel %} 
+      {% if album.author == user %}
+			<div class="home_block_music album_block">
+				<div class="home_music_title_author album_title_author">
+					<a class = 'home_music_author' href="{% url 'detail' album.author.id %}">{{ album.author }}</a> - <a class = 'album_name' href="{% url 'album-detail' album.id %}">{{ album.name }}</a>
+				
+				</div>
+				
+				<div class="home_music_date">
+					{{music.publication_date.date}}
+				</div>
+			</div>
+      {% endif %}
+			{% endfor %}
+			<img src="{% static 'img/logo.jpg' %}" alt="" class="main_page_image" />
+			<h2 class="main_page_suptitle">MusicHub</h2>\
+{% endif %}
+{% endblock %}

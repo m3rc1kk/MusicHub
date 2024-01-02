@@ -290,19 +290,19 @@
 
 /* form_file */
 
-.file-upload {
+.file-upload, .avatar_upload {
     position: relative;
     display: inline-block;
 }
 
-.file-input {
+.file-input, .avatar {
     visibility: hidden;
     position: absolute;
     width: 0;
     height: 0;
 }
 
-.file-label {
+.file-label, .avatar-label {
     display: inline-block;
     padding: 10px 20px;
     background-color: #fff;
@@ -319,6 +319,12 @@
     box-shadow:0 0 15px #A10AFF;
 }
 
+.avatar_title {
+    margin-right: 5px;
+    margin-bottom: 5px;
+    font-weight: 400;
+    font-size: 18px;
+}
 
 
 /* home */
@@ -354,7 +360,7 @@
 
 .home_block_music {
     display: block;
-    width: 1000px;
+    width: 1200px;
     height: 130px;
     margin-left: auto;
     margin-right: auto; 
@@ -369,7 +375,7 @@
 
 
 .music_player {
-  width: 950px;
+  width: 1150px;
   border: 0;
   border-radius: 5px;
 }
@@ -411,6 +417,12 @@
     right: 250px;
 }
 
+.home_music_album{
+    font-size: 20px;
+    text-decoration: none;
+    color: #7000B5;
+}
+
 .detail_delete{
     top:15px;
 }
@@ -438,7 +450,7 @@
     margin-top: -30px;
 }
 
-.upl_music{
+.upl_music, .cr_album{
     background-color: #fff;
     padding: 10px 50px;
     text-align: center;
@@ -450,10 +462,62 @@
     text-decoration: none;
 }
 
-.upl_music:hover{
+.upl_music:hover, .cr_album:hover{
     box-shadow:0 0 15px #A10AFF;
 }
 
+.create_album {
+    position: absolute;
+    top: 200px;
+    right: 80px;
+}
+
+.album_title{
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+
+.music-album{
+    display: flex;
+    justify-content: center;
+    
+}
+
+.sw_to_music, .sw_to_album {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 500;
+    font-size: 20px;
+    transition: .2s;
+
+}
+
+.sw_to_music{
+    margin-right: 20px;
+}
+
+.sw_to_album {
+    margin-left: 20px;
+}
+
+.switch_to_music, .switch_to_album {
+    list-style-type: none;
+    display: inline-block;
+    
+}
+
+.sw_to_music:hover, .sw_to_album:hover {
+    background-color: #fff;
+    color: #7000B5;
+    padding: 20px;
+    border: 0;
+    border-radius: 20px;
+}
+
+.detail_sw{
+    margin-top: 30px;
+}
 
 /* pagination */
 
@@ -517,4 +581,42 @@
     padding: 5px;
     border: 0;
     border-radius: 20px;
+}
+
+
+/* albums */
+
+.album_name{
+    text-decoration: none;
+    transition: .2s;
+}
+
+.album_name:hover{
+    opacity: .8;
+}
+
+.album_block{
+    width: 900px;
+   
+    height: 100px;
+}
+
+.album_title_author{
+    text-align: center;
+    margin-right: 50px;
+    padding-top: 25px;
+}
+
+.album-detail-back{
+    margin-top: 30px;
+}
+
+.album-delete-block{
+    margin-right: -220px;
+    
+}
+
+.album-delete{
+    font-size: 15px;
+    
 }

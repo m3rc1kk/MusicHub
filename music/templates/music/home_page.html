@@ -10,18 +10,28 @@
 				<h2 class="main__title hometitle">MusicHub</h2>
 				<a class="home_user" href="{% url 'detail' user.id %}">{{ request.user }}</a>
 			</div>
-			
+
+			<div class="music-album">
+				<ul>
+					<li class = 'switch_to_music'><a class = 'sw_to_music' href="{% url 'home' %}">Музыка</a></li>
+					<li class = 'switch_to_album'><a class = 'sw_to_album' href="{% url 'album-list' %}">Альбомы</a></li>
+				</ul>
+			</div>
+
 
 			<div class="upload_music">
 				<a class = 'upl_music' href="{% url 'upload-music' %}">Добавить песню</a>
 			</div>
 
+			<div class="create_album">
+				<a class = 'cr_album' href="{% url 'create-album' %}">Добавить альбом</a>
+			</div>
+
 			{% for music in musicmodel_list %} 
 			<div class="home_block_music">
 				<div class="home_music_title_author">
-					<a class = 'home_music_author' href="{% url 'detail' music.author.id %}">{{ music.author }}</a> - {{ music.title }}
-					
-
+					<a class = 'home_music_author' href="{% url 'detail' music.author.id %}">{{ music.author }}</a> - {{ music.title }} {% if music.album %}<a href="{% url 'album-detail' music.album.id %}" class="home_music_album">({{music.album}})</a>{% endif %}
+				
 				</div>
 				{% if request.user == music.author %}
 					<div class="home_music_delete_block">
@@ -38,6 +48,7 @@
 				</div>
 			</div>
 			{% endfor %}
+			
 			<img src="{% static 'img/logo.jpg' %}" alt="" class="main_page_image" />
 			<h2 class="main_page_suptitle">MusicHub</h2>\
 			<div class="pagination_block">

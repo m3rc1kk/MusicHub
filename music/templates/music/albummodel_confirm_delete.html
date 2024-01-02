@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %} Удаление {% endblock %}
+
+{% block content %}
+<div class="main">
+    <div class="main__block">
+      <form action="" method="post">
+        {% csrf_token %}
+        <h1 class="delete_title">Вы уверены, что хотите удалить?</h1>
+        <button class = 'main__button' type="submit">Удалить</button>
+      </form>
+    </div>
+</div>
+   
+{% endblock %}

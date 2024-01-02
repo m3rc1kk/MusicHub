@@ -1,11 +1,10 @@
 from django.shortcuts import render
 from django.shortcuts import redirect, render
 from .forms import *
-from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth.views import LoginView
 from django.views import generic
 from django.contrib.auth import login, logout
-from music.models import MusicModel
-from django.core.paginator import Paginator
+from music.models import AlbumModel, MusicModel
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 def UserRegisterView(request):
@@ -42,3 +41,17 @@ class DetailUser(LoginRequiredMixin, generic.DetailView):
 
 class CustomLoginView(LoginView):
      authentication_form = LoginForm
+
+    
+class DetailUserAlbum(LoginRequiredMixin, generic.DetailView):
+
+    model = User
+    template_name = 'account/detail_album.html'
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        album_objects = AlbumModel.objects.all()
+         
+
+        context['albummodel'] = album_objects
+       
+        return context

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% block title %}Добавление альбома{% endblock %}
+
+
+{% block content %}
+{% if request.user.is_authenticated %}
+<div class="main">
+    <div class="main__block">
+        <h2 class="main__title">Добавить альбом</h2>
+            <form action="" method="post">
+                {% csrf_token %}
+                <div>
+                    {{form.name|add_class:'default_form'|attr:'placeholder:Название альбома'}}
+                </div>
+
+                
+                <div>
+                    <button type="submit" class="main__button">Добавить</button>
+                </div>
+            </form>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

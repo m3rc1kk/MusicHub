@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}MusicHub{% endblock%}
+	
+{% block content %}
+{% if request.user.is_authenticated %}
+		<div class="main home-main">
+			<div class="home_title_block">
+				<h2 class="main__title hometitle">MusicHub</h2>
+				<a class="home_user" href="{% url 'detail' user.id %}">{{ request.user }}</a>
+			</div>
+
+      <div class="back-to-home_block album-detail-back">
+            <a class="back-to-home" href="{% url 'home' %}">Обратно на главную</a>
+        </div>
+        
+    
+      {% for mus in music %}
+      {% if mus.album in albums %}
+			<div class="home_block_music">
+				<div class="home_music_title_author">
+					<a class = 'home_music_author' href="{% url 'detail' mus.author.id %}">{{ mus.author }}</a> - {{ mus.title }} {% if mus.album %}<a href="{% url 'album-detail' mus.album.id %}" class="home_music_album">({{mus.album}})</a>{% endif %}
+				
+				</div>
+				{% if request.user == mus.author %}
+					<div class="home_music_delete_block">
+						<a class = 'home_music_delete' href="{% url 'delete' mus.id %}">Удалить</a>
+					</div>
+				{% endif %}
+				<div class="home_music_file">
+					<audio controls = "controls" class = 'music_player'>
+  					<source src="{{ mus.file.url }}" >
+					</audio>
+				</div>
+				<div class="home_music_date">
+					{{mus.publication_date.date}}
+				</div>
+			</div>
+      
+      {% endif %}
+			{% endfor %}
+      
+
+      
+    
+			
+			<img src="{% static 'img/logo.jpg' %}" alt="" class="main_page_image" />
+			<h2 class="main_page_suptitle">MusicHub</h2>
+			
+		</div>
+		{% endif %}
+{% endblock %}

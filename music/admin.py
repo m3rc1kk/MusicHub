@@ -5,3 +5,7 @@ from .models import *
 @admin.register(MusicModel)
 class MusicAdmin(admin.ModelAdmin):
     pass
+
+@admin.register(AlbumModel)
+class AlbumAdmin(admin.ModelAdmin):
+    pass

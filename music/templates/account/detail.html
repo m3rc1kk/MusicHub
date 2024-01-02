@@ -11,8 +11,19 @@
             <div class="detail-info">
                 <p class = 'detail_fn'>{{ user.first_name }}</p>
                 <p class = 'detail_ln'>{{ user.last_name }}</p>
+                <div class="music-album detail_sw">
+				<ul>
+					<li class = 'switch_to_music'><a class = 'sw_to_music' href="{% url 'detail' user.id %}">Музыка</a></li>
+                    
+					<li class = 'switch_to_album'><a class = 'sw_to_album'  href="{% url 'detail-album' user.id %}">Альбомы</a></li>
+                    
+				</ul>
+			</div>  
         </div>
+        
     </div>
+
+    
         <img src="{% static 'img/logo.jpg' %}" alt="" class="main_page_image">
         <h2 class="main_page_suptitle">MusicHub</h2>
         <div class="back-to-home_block">
@@ -28,7 +39,7 @@
         
 			<div class="home_block_music">
 				<div class="home_music_title_author detail-title-author">
-					<a class = 'home_music_author' href="{% url 'detail' music.author.id %}">{{ music.author }}</a> - {{ music.title }}
+					<a class = 'home_music_author' href="{% url 'detail' music.author.id %}">{{ music.author }}</a> - {{ music.title }} {% if music.album %}<a href="{% url 'album-detail' music.album.id %}" class="home_music_album">({{music.album}})</a>{% endif %}
 				
                 {% if request.user == music.author %}
 					<div class="home_music_delete_block detail_delete">

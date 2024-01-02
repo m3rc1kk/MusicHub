@@ -8,7 +8,7 @@ from django.contrib.auth import authenticate
 class UserRegisterForm(UserCreationForm):
     class Meta:
         model = User
-        fields = ['username', 'first_name', 'last_name', 'password1', 'password2', 'email']
+        fields = ['username' , 'first_name', 'last_name', 'password1', 'password2', 'email']
 
 
     def clean_first_name(self):

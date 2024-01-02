@@ -24,7 +24,7 @@ urlpatterns = [
     ),
     
     path('detail/<int:pk>', DetailUser.as_view(), name = 'detail'),
-    
+    path('detail/<int:pk>/album/', DetailUserAlbum.as_view(), name = 'detail-album'),
 
     
     
