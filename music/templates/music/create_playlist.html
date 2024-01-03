@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% load static %}
+{% block title %}Добавление плейлиста{% endblock %}
+
+
+{% block content %}
+{% if request.user.is_authenticated %}
+<script src="{% static 'django_select2/js/jquery-3.6.0.min.js' %}"></script>
+<script src="{% static 'django_select2/js/select2.full.js' %}"></script>
+<script src="{% static 'django_select2/js/i18n/ru.js' %}"></script>
+<div class="main">
+    <div class="main__block">
+        <h2 enctype="multipart/form-data" class="main__title">Добавить плейлист</h2>
+            <form action="" method="post">
+                {% csrf_token %}
+                <div>
+                    {{form.title|add_class:'default_form'|attr:'placeholder:Название плейлиста'}}
+                </div>
+                
+                <div>
+                    
+                    {{form.songs|add_class:'default_form playlist_form'}}
+                </div>
+               
+                
+                <div>
+                    <button type="submit" class="main__button">Добавить</button>
+                </div>
+            </form>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

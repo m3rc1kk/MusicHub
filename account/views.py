@@ -22,8 +22,8 @@ def UserRegisterView(request):
 
 
 def logout_user(request):
-        logout(request)
-        return redirect('login')
+    logout(request)
+    return redirect('login')
 
 
 class DetailUser(LoginRequiredMixin, generic.DetailView):

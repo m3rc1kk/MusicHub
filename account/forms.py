@@ -36,11 +36,7 @@ class UserRegisterForm(UserCreationForm):
 class LoginForm(AuthenticationForm):
     pass
 
-    def clean_username(self):
-        username = self.cleaned_data['username']
-        if not(User.objects.filter(username = username).exists()):
-            raise ValidationError('Такой пользователь не существует')
-        return username
+    
 
     def clean_password(self):
         password = self.cleaned_data['password']

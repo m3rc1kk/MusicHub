@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'music',
     'account',
     'widget_tweaks',
+    
 ]
 
 MIDDLEWARE = [
@@ -141,4 +142,5 @@ LOGOUT_URL = 'logout'
 
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
 

@@ -16,6 +16,7 @@
 					<li class = 'switch_to_music'><a class = 'sw_to_music'  href="{% url 'detail' user.id %}">Музыка</a></li>
           
 					<li class = 'switch_to_album'><a class = 'sw_to_album' href="{% url 'detail-album' user.id %}">Альбомы</a></li>
+					<li class = 'switch_to_playlist'><a class = 'sw_to_playlist' href="{% url 'playlist' %}">Ваши плейлисты</a></li>
 				</ul>
 			</div>
 
@@ -26,6 +27,10 @@
 
 			<div class="create_album">
 				<a class = 'cr_album' href="{% url 'create-album' %}">Добавить альбом</a>
+			</div>
+
+			<div class="create_playlist">
+				<a class = 'cr_playlist' href="{% url 'create-playlist' %}">Добавить плейлист</a>
 			</div>
 
 			{% for album in albummodel %} 

@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}MusicHub{% endblock%}
+	
+{% block content %}
+{% if request.user.is_authenticated %}
+		<div class="main home-main">
+			<div class="home_title_block">
+				<h2 class="main__title hometitle">MusicHub</h2>
+				<a class="home_user" href="{% url 'detail' user.id %}">{{ request.user }}</a>
+			</div>
+			
+      <div class="music-album">
+				<ul>
+					<li class = 'switch_to_music'><a class = 'sw_to_music' href="{% url 'home' %}">Музыка</a></li>
+					<li class = 'switch_to_album'><a class = 'sw_to_album' href="{% url 'album-list' %}">Альбомы</a></li>
+          <li class = 'switch_to_playlist'><a class = 'sw_to_playlist' href="{% url 'playlist' %}">Ваши плейлисты</a></li>
+				</ul>
+			</div>
+
+
+			<div class="upload_music">
+				<a class = 'upl_music' href="{% url 'upload-music' %}">Добавить песню</a>
+			</div>
+
+			<div class="create_album">
+				<a class = 'cr_album' href="{% url 'create-album' %}">Добавить альбом</a>
+			</div>
+
+      <div class="create_playlist">
+				<a class = 'cr_playlist' href="{% url 'create-playlist' %}">Добавить плейлист</a>
+			</div>
+      
+			{% for playlist in playlistmodel_list %} 
+      {% if playlist.author == request.user %}
+			<div class="home_block_music album_block">
+				<div class="home_music_title_author album_title_author">
+					<a class = 'album_name' href="{% url 'playlist-detail' playlist.id %}">{{ playlist.title }}</a>
+				
+				</div>
+
+        {% if request.user == playlist.author %}
+					<div class="home_music_delete_block album-delete-block">
+						<a class = 'home_music_delete album-delete' href="{% url 'delete-playlist' playlist.id %}">Удалить</a>
+					</div>
+				{% endif %}
+				
+			</div>
+      {% endif %}
+			{% endfor %}
+			<img src="{% static 'img/logo.jpg' %}" alt="" class="main_page_image" />
+			<h2 class="main_page_suptitle">MusicHub</h2>
+			<div class="pagination_block">
+				
+				<ul>
+        {% for p in paginator.page_range %}
+						{% if page_obj.has_other_pages %}
+            {% if page_obj.number == p %}
+                <li class="pagionation_selected">{{ p }}</li>
+            
+
+            {% elif p >= page_obj.number|add:-2 and p <= page_obj.number|add:2  %}
+                <li class = 'pagionation_no_selected'>
+                    <a class = 'pag_no_selected ' href="?page={{p}}">{{ p }}</a>
+                </li>
+                
+            {% endif %}
+						{% endif %}
+        {% endfor %}
+    		</ul>
+			</div>
+		</div>
+		{% endif %}
+{% endblock %}

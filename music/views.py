@@ -6,6 +6,9 @@ from django.views.generic import ListView, DeleteView, DetailView
 from .forms import *
 from .permissions import *
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.utils.decorators import method_decorator
+
+
 
 def main_page(request):
     return render(request, 'music/main_page.html')
@@ -68,3 +71,37 @@ def AlbumDetailView(request, pk):
 class DeleteAlbumView(AuthorPermissionsMixin,DeleteView):
     model = AlbumModel
     success_url = reverse_lazy('home')
+
+
+
+def create_playlist(request):
+    if request.method == 'POST':
+        form = PlayListForm(request.POST)
+        if form.is_valid():
+            playlist = form.save(commit=False)
+            playlist.author = request.user
+            playlist.save()
+            form.save_m2m()
+            return redirect('playlist')
+    else:
+        form = PlayListForm()
+        
+    return render(request, 'music/create_playlist.html', {'form': form})
+
+
+class PlayListView(ListView):
+    
+    model = PlayListModel
+    template_name = 'music/playlist_page.html'
+
+
+def PlayListDetailView(request, pk):
+    playlist = PlayListModel.objects.get(id = pk)
+    music = playlist.songs.all()
+
+    return render(request, 'music/playlist_detail.html', {'music': music, 'playlist': playlist})
+
+
+class DeletePlayListView(AuthorPermissionsMixin,DeleteView):
+    model = PlayListModel
+    success_url = reverse_lazy('playlist')

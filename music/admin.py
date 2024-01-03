@@ -9,3 +9,7 @@ class MusicAdmin(admin.ModelAdmin):
 @admin.register(AlbumModel)
 class AlbumAdmin(admin.ModelAdmin):
     pass
+
+@admin.register(PlayListModel)
+class PlayListAdmin(admin.ModelAdmin):
+    pass

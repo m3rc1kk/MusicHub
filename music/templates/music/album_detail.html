@@ -11,11 +11,13 @@
 				<a class="home_user" href="{% url 'detail' user.id %}">{{ request.user }}</a>
 			</div>
 
+			
       <div class="back-to-home_block album-detail-back">
             <a class="back-to-home" href="{% url 'home' %}">Обратно на главную</a>
         </div>
-        
-    
+      <div class="title_album-block">  
+				<h2 class="title_album">{{ albums.0.name }}</h2>
+			</div>
       {% for mus in music %}
       {% if mus.album in albums %}
 			<div class="home_block_music">

@@ -443,14 +443,14 @@
     box-shadow:0 0 5px #A10AFF;
 }
 
-.upload_music {
+.upload_music, .create_playlist {
     display: flex;
     justify-content: right;
     margin-right: 85px;
     margin-top: -30px;
 }
 
-.upl_music, .cr_album{
+.upl_music, .cr_album, .cr_playlist{
     background-color: #fff;
     padding: 10px 50px;
     text-align: center;
@@ -462,14 +462,28 @@
     text-decoration: none;
 }
 
-.upl_music:hover, .cr_album:hover{
+.upl_music:hover, .cr_album:hover, .cr_playlist:hover{
     box-shadow:0 0 15px #A10AFF;
 }
 
 .create_album {
     position: absolute;
     top: 200px;
-    right: 80px;
+    right: 85px;
+}
+
+.cr_playlist{
+    padding: 10px 38px;
+}
+
+.cr_album{
+    padding: 10px 45px;
+}
+
+.create_playlist {
+    position: absolute;
+    top: 268px;
+    right: -2px;
 }
 
 .album_title{
@@ -484,7 +498,7 @@
     
 }
 
-.sw_to_music, .sw_to_album {
+.sw_to_music, .sw_to_album, .sw_to_playlist {
     text-decoration: none;
     color: #fff;
     font-weight: 500;
@@ -501,13 +515,18 @@
     margin-left: 20px;
 }
 
-.switch_to_music, .switch_to_album {
+.sw_to_playlist {
+    margin-left: 30px;
+}
+
+
+.switch_to_music, .switch_to_album, .switch_to_playlist {
     list-style-type: none;
     display: inline-block;
     
 }
 
-.sw_to_music:hover, .sw_to_album:hover {
+.sw_to_music:hover, .sw_to_album:hover, .sw_to_playlist:hover {
     background-color: #fff;
     color: #7000B5;
     padding: 20px;
@@ -619,4 +638,26 @@
 .album-delete{
     font-size: 15px;
     
+}
+
+.title_album-block {
+    text-align: center;
+    
+}
+
+.title_album {
+    font-size: 30px;
+    font-weight: 600;
+}
+
+
+/* playlist */
+
+.playlist_title{
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.playlist_form{
+    height: 200px;
 }

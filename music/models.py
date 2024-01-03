@@ -8,8 +8,6 @@ class AlbumModel(models.Model):
     def __str__(self):
         return self.name
 
-
-
 class MusicModel(models.Model):
     title = models.CharField(max_length=20)
     file = models.FileField(upload_to='music_file/')
@@ -21,4 +19,13 @@ class MusicModel(models.Model):
         ordering = ['-publication_date']
 
     def __str__(self):
+        return self.title
+    
+
+class PlayListModel(models.Model):
+    title = models.CharField(max_length=25)
+    songs = models.ManyToManyField(MusicModel)
+    author = models.ForeignKey(User, on_delete = models.CASCADE)
+
+    def __str__(self) -> str:
         return self.title
